@@ -8,4 +8,10 @@ class TagsController < ApplicationController
         tag = Tag.find(params[:id])
         render json: tag, include: :quotes
     end
+
+    def create
+        tag = Tag.create(name: params[:name])
+        render json: tag
+    end
+
 end
