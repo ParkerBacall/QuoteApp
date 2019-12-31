@@ -19,7 +19,7 @@ function showQuotes(quotes){
         
         quote.tags.map(tag => {
             a = document.createElement('a')
-            a.innerHTML = `<a href=''>${tag.name}</a>`
+            a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
             cardDiv.appendChild(a)
         })
     })
