@@ -10,6 +10,7 @@ function showQuotes(quotes){
         const cardDiv = document.createElement('div')
         const p = document.createElement('p')
         const h3 = document.createElement('h3')
+        const input = document.createElement('input')
 
         const deleteButton = document.createElement('button')
         deleteButton.innerText = 'X'
@@ -18,13 +19,19 @@ function showQuotes(quotes){
             deleteQuote(quote.id)
         })
 
+        const updateButton = document.createElement('button')
+        updateButton.innerText = 'update'
+        updateButton.addEventListener('click', ()=>{
+           updateQuote(quote.id, input.value)
+        })
 
+        input.name = "text"
         
         p.innerText = quote.text 
         h3.innerText = quote.author
         cardDiv.className = "cards"
         cards.appendChild(cardDiv)
-        cardDiv.append(p, deleteButton, h3)
+        cardDiv.append(p, input, updateButton, deleteButton, h3)
         
         quote.tags.map(tag => {
             a = document.createElement('a')
@@ -35,11 +42,23 @@ function showQuotes(quotes){
 }
 
 function deleteQuote(id){
+    console.log('delete hit')
     fetch(`http://localhost:3000/quotes/${id}`,{
     method: 'DELETE'
     })
 }
 
+function updateQuote(id, value){
+    fetch(`http://localhost:3000/quotes/${id}`,{
+    method: 'PUT',
+    headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body:JSON.stringify({text: value})
+    })
+
+}
 
 
 
@@ -53,6 +72,7 @@ function showTags(tags){
     tags.map(tag => {
         const option = document.createElement('option')
         option.textContent = tag.name
+        option.type = "checkbox"
         option.value = tag.id
         tagDropdown.appendChild(option)
     })
