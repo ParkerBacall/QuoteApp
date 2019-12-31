@@ -11,23 +11,37 @@ Quote.destroy_all
 Tag.destroy_all
 
 
-Quote.create(text: "Computer Science is no more about computers than astronomy is about telescopes.",
+cs1 = Quote.create(text: "Computer Science is no more about computers than astronomy is about telescopes.",
 author: "Edsger W. Dijkstra")
 
-Quote.create(text: "Simplicity is prerequisite for reliability.",
+cs2 = Quote.create(text: "Simplicity is prerequisite for reliability.",
 "author": "Edsger W. Dijkstra")
 
-Quote.create(text: "The computing scientist’s main challenge is not to get confused by the complexities of his own making.",
+cs3 = Quote.create(text: "The computing scientist’s main challenge is not to get confused by the complexities of his own making.",
 "author": "Edsger W. Dijkstra")
 
-Quote.create(text:"If debugging is the process of removing software bugs, then programming must be the process of putting them in.",
+cs4 = Quote.create(text:"If debugging is the process of removing software bugs, then programming must be the process of putting them in.",
 "author": "Edsger W. Dijkstra")
 
 
-Tag.create(name: "Inspirational")
-Tag.create(name: "Ear")
-Tag.create(name: "Courage")
-Tag.create(name: "Programming")
+inspirational = Tag.create(name: "Inspirational")
+ear = Tag.create(name: "Ear")
+courage = Tag.create(name: "Courage")
+programming = Tag.create(name: "Programming")
+
+QuoteTag.create(quote: cs1, tag: programming)
+QuoteTag.create(quote: cs1, tag: courage)
+
+QuoteTag.create(quote: cs2, tag: ear)
+QuoteTag.create(quote: cs2, tag: courage)
+
+QuoteTag.create(quote: cs3, tag: programming)
+QuoteTag.create(quote: cs3, tag: inspirational)
+QuoteTag.create(quote: cs3, tag: courage)
+
+QuoteTag.create(quote: cs4, tag: ear)
+
+
 
 
 

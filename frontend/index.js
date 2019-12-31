@@ -16,6 +16,12 @@ function showQuotes(quotes){
         cardDiv.className = "cards"
         cards.appendChild(cardDiv)
         cardDiv.append(p, h3)
+        
+        quote.tags.map(tag => {
+            a = document.createElement('a')
+            a.innerHTML = `<a href=''>${tag.name}</a>`
+            cardDiv.appendChild(a)
+        })
     })
 
 }

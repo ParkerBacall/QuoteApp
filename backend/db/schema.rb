@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2019_12_31_001713) do
   end
 
   create_table "quote_tags", force: :cascade do |t|
-    t.bigint "quotes_id", null: false
-    t.bigint "tags_id", null: false
+    t.bigint "quote_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["quotes_id"], name: "index_quote_tags_on_quotes_id"
-    t.index ["tags_id"], name: "index_quote_tags_on_tags_id"
+    t.index ["quote_id"], name: "index_quote_tags_on_quote_id"
+    t.index ["tag_id"], name: "index_quote_tags_on_tag_id"
   end
 
   create_table "quotes", force: :cascade do |t|
@@ -61,6 +61,6 @@ ActiveRecord::Schema.define(version: 2019_12_31_001713) do
 
   add_foreign_key "person_resolutions", "people"
   add_foreign_key "person_resolutions", "resolutions"
-  add_foreign_key "quote_tags", "quotes", column: "quotes_id"
-  add_foreign_key "quote_tags", "tags", column: "tags_id"
+  add_foreign_key "quote_tags", "quotes"
+  add_foreign_key "quote_tags", "tags"
 end
