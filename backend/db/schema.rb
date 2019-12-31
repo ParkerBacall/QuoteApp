@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_232452) do
+ActiveRecord::Schema.define(version: 2019_12_31_001713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_12_30_232452) do
     t.index ["resolution_id"], name: "index_person_resolutions_on_resolution_id"
   end
 
+  create_table "quote_tags", force: :cascade do |t|
+    t.bigint "quotes_id", null: false
+    t.bigint "tags_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quotes_id"], name: "index_quote_tags_on_quotes_id"
+    t.index ["tags_id"], name: "index_quote_tags_on_tags_id"
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.string "text"
     t.string "author"
@@ -44,6 +53,14 @@ ActiveRecord::Schema.define(version: 2019_12_30_232452) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "person_resolutions", "people"
   add_foreign_key "person_resolutions", "resolutions"
+  add_foreign_key "quote_tags", "quotes", column: "quotes_id"
+  add_foreign_key "quote_tags", "tags", column: "tags_id"
 end
