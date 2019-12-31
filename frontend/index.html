@@ -11,6 +11,20 @@
     
     <h1>That's What Ahmed Said!</h1>
 
+
+    <div class= "createForm">
+        <h2>Add a Quote</h2>
+        <Form action='http://localhost:3000/quotes' method="POST">
+            <label>Text:</label>
+            <input type="text" name="text">
+            <label>Author:</label>
+            <input type="text" name="author">
+            <select name="tag" id="tagDropdown" multiple="multiple"></select>
+            <input type="submit">
+            
+        </Form>
+    </div>
+
     <div class="cardsContainer"></div>
 
 
