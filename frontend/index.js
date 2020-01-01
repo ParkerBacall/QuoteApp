@@ -42,7 +42,6 @@ function showQuotes(quotes){
 }
 
 function deleteQuote(id){
-    console.log('delete hit')
     fetch(`http://localhost:3000/quotes/${id}`,{
     method: 'DELETE'
     })
@@ -60,20 +59,16 @@ function updateQuote(id, value){
 
 }
 
-
-
-
 fetch('http://localhost:3000/tags')
-.then(response => response.json())
-.then(tags => showTags(tags))
+    .then(response => response.json())
+    .then(tags => showTags(tags))
 
 function showTags(tags){
     const tagDropdown = document.getElementById('tagDropdown')
     tags.map(tag => {
         const option = document.createElement('option')
         option.textContent = tag.name
-        option.type = "checkbox"
         option.value = tag.id
-        tagDropdown.appendChild(option)
+        tagDropdown.append(option)
     })
 }

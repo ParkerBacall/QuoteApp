@@ -14,12 +14,12 @@
 
     <div class= "createForm">
         <h2>Add a Quote</h2>
-        <Form action='http://localhost:3000/quotes' method="POST">
+        <Form action='http://localhost:3000/quotes' method="POST" id="addQuote">
             <label>Text:</label>
             <input type="text" name="text">
             <label>Author:</label>
             <input type="text" name="author">
-            <select name="tag" id="tagDropdown" multiple="multiple"></select>
+            <select name="tag_ids[]" id="tagDropdown" multiple></select>
             <input type="submit">
             
         </Form>

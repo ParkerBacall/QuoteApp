@@ -11,8 +11,11 @@ class QuotesController < ApplicationController
     end
 
     def create
-        quote = Quote.create(text: params[:text], author: params[:author])
-        QuoteTag.create(quote_id: quote.id, tag_id: params[:tag])
+        @quote = Quote.new(quote_params)
+        if @quote.valid?
+            @quote.save
+        end 
+        
         redirect_to "http://localhost:3001/"
     end
 
@@ -24,6 +27,16 @@ class QuotesController < ApplicationController
     def update
         quote = Quote.find(params[:id])
         quote.update(text: params[:text])
+    end
+
+    private
+
+    def quote_params
+        params.permit(
+            :text,
+            :author,
+            tag_ids: []
+        )
     end
 
 
