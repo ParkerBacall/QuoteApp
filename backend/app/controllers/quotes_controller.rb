@@ -15,7 +15,6 @@ class QuotesController < ApplicationController
         if @quote.valid?
             @quote.save
         end 
-        
         redirect_to "http://localhost:3001/"
     end
 
@@ -38,7 +37,4 @@ class QuotesController < ApplicationController
             tag_ids: []
         )
     end
-
-
-
 end

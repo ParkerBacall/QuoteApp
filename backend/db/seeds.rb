@@ -1,18 +1,41 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'rest-client'
 
 QuoteTag.destroy_all
 Quote.destroy_all
 Tag.destroy_all
 
-# ear1 = Quote.create(text: "And for the few that only lend their ear, that few is all the world.", author: "Samuel Daniel")
-# ear2 = Quote.create(text: "The ear of the leader must ring with the voices of the people.", author: "Woodrow Wilson")
-# ear3 = Quote.create(text: "It’s hard to look up to a leader who keeps his ear to the ground", author: "James H. Boren")
+# response = RestClient.get("https://quote-garden.herokuapp.com/quotes/all")
+# result = JSON.parse(response)
+
+# result["results"].map {|quote| 
+#     Quote.create(text: quote["quoteText"], author: quote["quoteAuthor"])
+# }
+
+tagCategories = ["Age", "Alone", "Amazing", "Anger", "Anniversary", "Architecture", "Art Favorite", "Attitude", "Beauty", "Best", 
+    "Birthday", "Brainy", "Business", "Car", "Chance", "Change", "Christmas", "Communication", "Computers", "Cool", "Courage", 
+    "Dad", "Dating", "Death", "Design", "Diet", "Dreams", "Easter", "Education", "Environmental", "Equality", "Experience", 
+    "Failure", "Faith", "Family", "Famous", "Fear", "Finance", "Fitness", "Food", "Forgiveness", "Freedom", 
+    "Friendship", "Funny", "Future", "Gardening", "Good", "Government", "Graduation", "Great", "Happiness", "Health", "History", 
+    "Home", "Hope", "Humor", "Imagination", "Independence", "Inspirational", "Intelligence", "Jealousy", "Knowledge", "Leadership", 
+    "Learning", "Legal", "Life", "Love", "Marriage", "Medical", "Men", "Mom", "Money", "Morning", "Motivational", "Movies", "Music", 
+    "Nature", "Parenting", "Patience", "Patriotism", "Peace", "Pet", "Poetry", "Politics", "Positive", "Power", "Relationship", 
+    "Religion", "Respect", "Sad", "Science", "Smile", "Society", "Space", "Sports", "Strength", "Success", "Sympathy", "Teacher", 
+    "Technology", "Thankful", "Thanksgiving", "Time", "Travel", "Trust", "Truth", "War", "Wedding", "Wisdom", "Women", "Work"]
+
+# tagCategories = ["Age", "Alone", "Amazing", "Anger"]
+
+tagCategories.map{|tag| 
+    Tag.create(name: tag)
+}
+
+inspirational = Tag.create(name: "Inspirational")
+ear = Tag.create(name: "Ear")
+courage = Tag.create(name: "Courage")
+programming = Tag.create(name: "Programming")
+
+ear.quotes.create(text: "And for the few that only lend their ear, that few is all the world.", author: "Samuel Daniel")
+ear2 = Quote.create(text: "The ear of the leader must ring with the voices of the people.", author: "Woodrow Wilson")
+ear3 = Quote.create(text: "It’s hard to look up to a leader who keeps his ear to the ground", author: "James H. Boren")
 
 # kwest1 = Quote.create(text: "For me giving up is way harder than trying", author: "Kayne West")
 # kwest2 = Quote.create(text: "I care. I care about everything. Sometimes not giving a f#%k is caring the most.", author: "Kayne West")
@@ -20,12 +43,6 @@ Tag.destroy_all
 # bb1 = Quote.create(text: "If that’s true, if you don’t know who I am, then maybe your best course… would be to tread lightly.", author: "Walter White")
 # bb2 = Quote.create(text: "I am not in danger, Skyler. I AM the danger!", author: "Walter White")
 # bb3 = Quote.create(text: "Just because you shot Jesse James doesn't mean you are Jesse James.", author: "Walter White")
-# bb4 = Quote.create(text: "", author: "")
-# bb5 = Quote.create(text: "", author: "")
-# bb6 = Quote.create(text: "", author: "")
-# bb7 = Quote.create(text: "", author: "")
-# bb8 = Quote.create(text: "", author: "")
-# bb9 = Quote.create(text: "", author: "")
 
 cs1 = Quote.create(text: "Computer Science is no more about computers than astronomy is about telescopes.", author: "Edsger W. Dijkstra")
 cs2 = Quote.create(text: "Simplicity is prerequisite for reliability.", author: "Edsger W. Dijkstra")
@@ -77,10 +94,10 @@ cs4 = Quote.create(text:"If debugging is the process of removing software bugs, 
 # ron4 = Quote.create(text: "", author: "")
 
 
-inspirational = Tag.create(name: "Inspirational")
-ear = Tag.create(name: "Ear")
-courage = Tag.create(name: "Courage")
-programming = Tag.create(name: "Programming")
+# inspirational = Tag.create(name: "Inspirational")
+# ear = Tag.create(name: "Ear")
+# courage = Tag.create(name: "Courage")
+# programming = Tag.create(name: "Programming")
 
 QuoteTag.create(quote: cs1, tag: programming)
 QuoteTag.create(quote: cs1, tag: courage)
