@@ -6,6 +6,7 @@ fetch('http://localhost:3000/quotes')
 
 function showQuotes(quotes){
     const cardsContainer = document.querySelector('.cards-container')
+    
     quotes.map(quote => {
         const cardDiv = document.createElement('div')
         const input = document.createElement('input')
