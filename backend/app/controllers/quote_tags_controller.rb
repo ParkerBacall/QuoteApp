@@ -1,8 +1,8 @@
 class QuoteTagsController < ApplicationController
 
     def index
-        quoteTags = QuoteTag.all
-        # render json: quoteTags, include: :tag :quote
+        quoteTags = QuoteTag.includes(:tag, :quote)
+        render json: quoteTags, include: [:tag, :quote]
     end
 
     def create
