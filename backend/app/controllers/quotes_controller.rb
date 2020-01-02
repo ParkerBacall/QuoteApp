@@ -25,7 +25,7 @@ class QuotesController < ApplicationController
 
     def update
         quote = Quote.find(params[:id])
-        quote.update(text: params[:text])
+        quote.update(quote_params)
     end
 
     private
