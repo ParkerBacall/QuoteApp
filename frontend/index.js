@@ -100,8 +100,8 @@ function showQuotes(quotes){
         tagDiv.className = "tag-div"
         cardsContainer.appendChild(cardDiv)
         buttonDiv.append(editButton, deleteButton)
-        cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, quoteTagselect, tagDiv, editclicked)
 
+        cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, quoteTagselect, tagDiv, editclicked)
 
       
         form.append(select)
