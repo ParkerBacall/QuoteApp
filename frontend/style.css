@@ -80,6 +80,14 @@ main{
     display: none;
 }
 
+.addTag{
+    display: none;
+}
+
+.CreateQuoteTagDropdown {
+    display: none;
+}
+
 .edit-quote-author {
     display: none;
 }
