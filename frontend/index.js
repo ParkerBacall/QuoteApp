@@ -11,6 +11,9 @@ function showQuotes(quotes){
         const p = document.createElement('p')
         const h3 = document.createElement('h3')
         const input = document.createElement('input')
+        const form = document.createElement('form') 
+        const select = document.createElement('select')
+        const submit = document.createElement('input')
 
         const deleteButton = document.createElement('button')
         deleteButton.innerText = 'X'
@@ -26,17 +29,23 @@ function showQuotes(quotes){
         })
 
         input.name = "text"
+        submit.type = 'submit'
+
+        select.className = 'QuoteTagdd'
         
+        form.method = 'POST'
+        form.action = 'http://localhost:3000/quote_tags'
+
         p.innerText = quote.text 
         h3.innerText = quote.author
         cardDiv.className = "cards"
         cards.appendChild(cardDiv)
         cardDiv.append(p, input, updateButton, deleteButton, h3)
-        
+        form.append(select, submit)
         quote.tags.map(tag => {
             a = document.createElement('a')
             a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
-            cardDiv.appendChild(a)
+            cardDiv.append(a, form)
         })
     })
 }
@@ -67,13 +76,19 @@ fetch('http://localhost:3000/tags')
 .then(response => response.json())
 .then(tags => showTags(tags))
 
+
 function showTags(tags){
     const tagDropdown = document.getElementById('tagDropdown')
+    const addTags = document.getElementsByClassName('QuoteTagdd')
+    
     tags.map(tag => {
         const option = document.createElement('option')
+        const addOption = document.createElement('option')
         option.textContent = tag.name
+        addOption.textContent = tag.name
         option.type = "checkbox"
         option.value = tag.id
+        addOption.value = tag.id
         tagDropdown.appendChild(option)
     })
 }
