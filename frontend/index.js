@@ -8,9 +8,6 @@ function showQuotes(quotes){
     const cardsContainer = document.querySelector('.cards-container')
     quotes.map(quote => {
         const cardDiv = document.createElement('div')
-
-        const p = document.createElement('p')
-        const h3 = document.createElement('h3')
         const input = document.createElement('input')
         const form = document.createElement('form') 
         const select = document.createElement('select')
@@ -57,6 +54,16 @@ function showQuotes(quotes){
             deleteQuote(quote.id)
         })
 
+
+        input.name = "text"
+        submit.type = 'submit'
+
+        select.className = 'QuoteTagdd'
+        
+        form.method = 'POST'
+        form.action = 'http://localhost:3000/quote_tags'
+
+
         quoteText.innerText = quote.text 
         quoteText.className = "quote-text"
         quoteAuthor.innerText = quote.author
@@ -67,25 +74,10 @@ function showQuotes(quotes){
         buttonDiv.append(editButton, deleteButton)
         cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, tagDiv, editclicked)
 
-
-        input.name = "text"
-        submit.type = 'submit'
-
-        select.className = 'QuoteTagdd'
-        
-        form.method = 'POST'
-        form.action = 'http://localhost:3000/quote_tags'
-
-        p.innerText = quote.text 
-        h3.innerText = quote.author
-        cardDiv.className = "cards"
-        cards.appendChild(cardDiv)
-        cardDiv.append(p, input, updateButton, deleteButton, h3)
+      
         form.append(select, submit)
-        quote.tags.map(tag => {
-            a = document.createElement('a')
-            a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
-            cardDiv.append(a, form)
+
+
         quote.tags.map(tag => {
             a = document.createElement('a')
             a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
