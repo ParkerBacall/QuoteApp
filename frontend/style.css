@@ -1,12 +1,29 @@
 
-* {
-    box-sizing: border-box;
-    
-  }
-  
 body {
     background-color:white;
   }
+
+@import url('https://fonts.googleapis.com/css?family=Notable|Roboto&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+    
+    header{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+
 
   .row::after {
     content: "";
@@ -73,10 +90,9 @@ body {
   }
   
   .aside {
-
     display: flex; 
     flex-direction: column;
-    /* border: 5px solid orange; */
+    
 
     margin-left: -40px;
     margin-bottom: 7px;
@@ -89,6 +105,7 @@ body {
     font-size: 14px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   }
+
 
   .add-txt {
     margin: 20px;
@@ -105,6 +122,22 @@ body {
     color: purple;
     
   }
+
+.card-div{
+    border: 5px solid green;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 400px;
+    padding: 25px;
+}
+
+.tag-div{
+    border: 5px solid lightcoral;
+    /* display: flex; */
+    flex-wrap: wrap;
+}
+
 
   .add-title {
       font-size: 35px;
@@ -160,7 +193,22 @@ body {
     padding: 10px;
     font-size: 15px;
     border-radius: 5px;
-    
+}
+
+.addTag{
+    display: none;
+}
+
+.tagDelete{
+    display: none;
+}
+
+.CreateQuoteTagDropdown {
+    display: none;
+}
+
+.edit-quote-author {
+    display: none;
 }
 .go-bt {
     border: 1px solid grey;
@@ -170,8 +218,8 @@ body {
     border-radius: 5px;
     color: grey;
     font-style: italic;
-
 }
+
 
   .footer {
     background-color:purple;
@@ -221,12 +269,20 @@ body {
     width: 40px; 
     background-image: url(assets/pencil.png);
     background-size: contain;
-    background-position: center;
-    background-size: 25px;
-    background-repeat: no-repeat;
-    margin-left: 10px;
 
-  }
+/* .tagDelete{
+    display: none;
+} */
+
+.tagDeleteDiv{
+    display: none;
+}
+
+a{
+    padding-right: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
 
   .edit-button:hover {
     background-color: purple;
@@ -264,10 +320,9 @@ body {
   a{
       padding: 10px;
       margin-top: 20px;
-      color: white;
-
-      
+      color: white;      
   }
+    
   h3{
     font-size: 15px;
     margin-left: 15px;
@@ -294,3 +349,71 @@ margin-bottom: 15px;
     margin-left: 15px;
     margin-bottom: 15px;
 }
+
+
+.tag-nav-bar{
+    background-color: whitesmoke;
+}
+
+.title-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(107, 82, 121);
+    padding: 25px;
+}
+
+.tag-title{
+    padding-left: 25px;
+    font-family: 'Notable', sans-serif;
+    color: whitesmoke;
+}
+
+.button-div{
+    display: flex;
+    align-content: space-between;
+    padding-right: 25px;
+}
+
+.fb-button{
+    width: 35px;
+    height: 35px;
+    background-image: url('https://webstockreview.net/images250_/facebook-and-twitter-icons-png-13.png');
+    background-size: 35px 35px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgb(107, 82, 121);
+    border: none;
+    outline:none;
+}
+
+.twitter-button{
+    width: 35px;
+    height: 35px;
+    background-image: url('https://webstockreview.net/images/twitter-icon-png-white-1.png');
+    background-size: 23px 27px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgb(107, 82, 121);
+    border: none;
+    outline:none;
+}
+
+.linked-in-button{
+    width: 35px;
+    height: 35px;
+    background-image: url('https://webstockreview.net/images250_/linkedin-icon-png-1.png');
+    background-size: 16px 17px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgb(107, 82, 121);
+    border: none;
+    outline:none;
+}
+
+h4{
+    color: rgb(107, 82, 121);
+}
+/* font-family: 'Roboto', sans-serif; */
+
