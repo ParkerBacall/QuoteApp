@@ -18,8 +18,10 @@ function showTags(tag){
 
     tag.quotes.map(quote => {
         const cardDiv = document.createElement('div')
+
         const quoteText = document.createElement('p')
         const quoteAuthor = document.createElement('h4')
+
 
         cardDiv.className = "card-div"
         quoteText.textContent = quote.text

@@ -17,6 +17,17 @@ function showQuotes(quotes){
         const quoteText = document.createElement('p')
         const quoteAuthor = document.createElement('h3')
 
+        const quoteTagselect = document.createElement('select')
+
+        quoteTagselect.className = "CreateQuoteTagDropdown"
+        quoteTagselect.multiple = "multiple"
+        quoteTagselect.name = "tag_ids[]"
+
+    fetch('http://localhost:3000/tags')
+    .then(response => response.json())
+    .then(tags => showTags(tags, quoteTagselect))
+
+
         const editButton = document.createElement('button')
         editButton.textContent = ""
         editButton.className = "edit-button"
@@ -25,23 +36,36 @@ function showQuotes(quotes){
         editclicked.className = "editclicked"
         const editQuoteText = document.createElement('input')
         editQuoteText.name = "text"
-        editQuoteText.placeholder = quote.text
+        editQuoteText.defaultValue = quote.text
         editQuoteText.className = "edit-quote-text"
 
         const editQuoteAuthor = document.createElement('input')
         editQuoteAuthor.name = "text"
-        editQuoteAuthor.placeholder = quote.author
+        editQuoteAuthor.defaultValue = quote.author
         editQuoteAuthor.className = "edit-quote-author"
 
         editButton.addEventListener('click', ()=>{
+           if(editQuoteText.style.display === 'none'){
             editQuoteText.style.display = 'block'
             editclicked.style.display = 'block'
             quoteText.style.display = 'none'
+
+            quoteTagselect.style.display = 'block'
             editQuoteAuthor.style.display = 'block'
             quoteAuthor.style.display = 'none'
+           } else {
+            editQuoteText.style.display = 'none'
+            editclicked.style.display = 'none'
+            quoteText.style.display = 'block'
+            quoteTagselect.style.display = 'none'
+            editQuoteAuthor.style.display = 'none'
+            quoteAuthor.style.display = 'block'
+           }
+            
+
 
             editclicked.addEventListener('click', ()=>{
-                editQuote(quote.id, editQuoteText.value, editQuoteAuthor.value)
+                editQuote(quote.id, editQuoteText.value, editQuoteAuthor.value,  getSelectValues(quoteTagselect))
             })
         })
 
@@ -56,17 +80,14 @@ function showQuotes(quotes){
 
 
         input.name = "text"
-        submit.type = 'submit'
-
-        select.className = 'QuoteTagdd'
-        
-        form.method = 'POST'
-        form.action = 'http://localhost:3000/quote_tags'
 
 
         quoteText.innerText = quote.text 
         quoteText.className = "quote-text"
+        quoteText.placeholder = quote.text 
+
         quoteAuthor.innerText = quote.author
+        quoteAuthor.placeholder = quote.author
         buttonDiv.className = "button-div"
         cardDiv.className = "card-div"
         tagDiv.className = "tag-div"
@@ -79,11 +100,17 @@ function showQuotes(quotes){
 
 
         quote.tags.map(tag => {
-            a = document.createElement('a')
+            const a = document.createElement('a')
+            const tagDelete = document.createElement('button')
+            const tagDeleteDiv = document.createElement('div')
+            tagDelete.textContent = 'x'
+            tagDelete.className = 'tagDelete'
             a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
+            a.appendChild(tagDelete)
             tagDiv.appendChild(a)
-
+            
         })
+
     })
 }
 
@@ -93,34 +120,31 @@ function deleteQuote(id){
     })
 }
 
-function editQuote(id, quoteText, quoteAuthor){
+function editQuote(id, quoteText, quoteAuthor, quoteTag){
     fetch(`http://localhost:3000/quotes/${id}`,{
-    method: 'PUT',
+    method: 'PATCH',
     headers:{
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
-    body:JSON.stringify({text: quoteText, author: quoteAuthor})
+    body:JSON.stringify({text: quoteText, author: quoteAuthor, tag_ids: quoteTag})
     })
-
+ window.location.reload()
 }
 
 fetch('http://localhost:3000/tags')
     .then(response => response.json())
-    .then(tags => showTags(tags))
-
+    .then(tags => showTags(tags, tagDropdown))
+    .then(response => response.json())
+    .then(tags => bottomLinks(tags))
+    .catch(error => console.log(error))
 
 function showTags(tags){
     const tagDropdown = document.getElementById('tagDropdown')
 
     const addTags = document.getElementsByClassName('QuoteTagdd')
-    const tagContainer = document.getElementById('tag-container')
 
     tags.map(tag => {
-        const allTag = document.createElement('p')
-        allTag.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
-        tagContainer.append(allTag)
-
         const option = document.createElement('option')
         const addOption = document.createElement('option')
         option.textContent = tag.name
@@ -131,8 +155,36 @@ function showTags(tags){
         addOption.value = tag.id
         tagDropdown.appendChild(option)
 
-        option.value = tag.id
-        tagDropdown.append(option)
 
     })
+    return fetch("http://localhost:3000/tags")
 }
+
+function bottomLinks(tags){
+    const tagContainer = document.getElementById('tag-container')
+    tags.map(tag => {
+    
+        const allTag = document.createElement('p')
+        allTag.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
+        tagContainer.append(allTag)
+    })
+}
+
+
+
+
+function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+  
+    for (var i=0, iLen=options.length; i<iLen; i++) {
+      opt = options[i];
+  
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+    return result;
+  }
+

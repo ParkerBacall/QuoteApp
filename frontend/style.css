@@ -39,6 +39,7 @@ main{
     margin: 10px;
 }
 
+
 .addNew{
     display: flex; 
     flex-direction: column;
@@ -99,6 +100,10 @@ main{
 }
 
 .editclicked {
+    display: none;
+}
+
+.tagDelete{
     display: none;
 }
 
