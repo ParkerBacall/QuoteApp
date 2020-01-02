@@ -1,8 +1,10 @@
 
+const tagDropdown = document.getElementById('tagDropdown')
+
+
 fetch('http://localhost:3000/quotes')
 .then(response => response.json())
 .then(quotes => showQuotes(quotes))
-.catch(error => console.log(error))
 
 function showQuotes(quotes){
     const cardsContainer = document.querySelector('.cards-container')
@@ -11,22 +13,22 @@ function showQuotes(quotes){
         const input = document.createElement('input')
         const form = document.createElement('form') 
         const select = document.createElement('select')
-        const submit = document.createElement('input')
         const tagDiv = document.createElement('div')
         const buttonDiv = document.createElement('div')
         const quoteText = document.createElement('p')
         const quoteAuthor = document.createElement('h3')
-
         const quoteTagselect = document.createElement('select')
 
         quoteTagselect.className = "CreateQuoteTagDropdown"
         quoteTagselect.multiple = "multiple"
         quoteTagselect.name = "tag_ids[]"
 
+     
+
     fetch('http://localhost:3000/tags')
     .then(response => response.json())
     .then(tags => showTags(tags, quoteTagselect))
-
+  
 
         const editButton = document.createElement('button')
         editButton.textContent = ""
@@ -34,6 +36,7 @@ function showQuotes(quotes){
         const editclicked = document.createElement('button')
         editclicked.textContent = "Submit"
         editclicked.className = "editclicked"
+
         const editQuoteText = document.createElement('input')
         editQuoteText.name = "text"
         editQuoteText.defaultValue = quote.text
@@ -49,7 +52,6 @@ function showQuotes(quotes){
             editQuoteText.style.display = 'block'
             editclicked.style.display = 'block'
             quoteText.style.display = 'none'
-
             quoteTagselect.style.display = 'block'
             editQuoteAuthor.style.display = 'block'
             quoteAuthor.style.display = 'none'
@@ -62,7 +64,6 @@ function showQuotes(quotes){
             quoteAuthor.style.display = 'block'
            }
             
-
 
             editclicked.addEventListener('click', ()=>{
                 editQuote(quote.id, editQuoteText.value, editQuoteAuthor.value,  getSelectValues(quoteTagselect))
@@ -79,7 +80,12 @@ function showQuotes(quotes){
         })
 
 
+
+
         input.name = "text"
+       
+        select.className = 'QuoteTagdd'
+    
 
 
         quoteText.innerText = quote.text 
@@ -93,10 +99,11 @@ function showQuotes(quotes){
         tagDiv.className = "tag-div"
         cardsContainer.appendChild(cardDiv)
         buttonDiv.append(editButton, deleteButton)
-        cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, tagDiv, editclicked)
+        cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, quoteTagselect, tagDiv, editclicked)
+
 
       
-        form.append(select, submit)
+        form.append(select)
 
 
         quote.tags.map(tag => {
@@ -106,8 +113,7 @@ function showQuotes(quotes){
             tagDelete.textContent = 'x'
             tagDelete.className = 'tagDelete'
             a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
-            a.appendChild(tagDelete)
-            tagDiv.appendChild(a)
+            tagDiv.append(a, tagDelete)
             
         })
 
@@ -139,22 +145,14 @@ fetch('http://localhost:3000/tags')
     .then(tags => bottomLinks(tags))
     .catch(error => console.log(error))
 
-function showTags(tags){
-    const tagDropdown = document.getElementById('tagDropdown')
+function showTags(tags, parentDiv){
 
     const addTags = document.getElementsByClassName('QuoteTagdd')
-
     tags.map(tag => {
         const option = document.createElement('option')
-        const addOption = document.createElement('option')
         option.textContent = tag.name
-
-        addOption.textContent = tag.name
-        option.type = "checkbox"
         option.value = tag.id
-        addOption.value = tag.id
-        tagDropdown.appendChild(option)
-
+        parentDiv.append(option)
 
     })
     return fetch("http://localhost:3000/tags")
@@ -187,4 +185,3 @@ function getSelectValues(select) {
     }
     return result;
   }
-
