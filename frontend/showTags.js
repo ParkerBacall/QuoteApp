@@ -17,7 +17,6 @@ function showTags(tag){
         const cardDiv = document.createElement('div')
         const p = document.createElement('p')
         const h3 = document.createElement('h3')
-        console.log(quote)
 
         cardDiv.className = "card-div"
         p.textContent = quote.text

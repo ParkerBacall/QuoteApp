@@ -15,7 +15,7 @@ class QuotesController < ApplicationController
         if @quote.valid?
             @quote.save
         end 
-        redirect_to "http://localhost:3001/"
+        redirect_back fallback_location: @quote
     end
 
     def destroy
