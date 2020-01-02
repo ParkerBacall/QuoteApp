@@ -80,9 +80,6 @@ function showQuotes(quotes){
             deleteQuote(quote.id)
         })
 
-
-
-
         input.name = "text"
        
         select.className = 'QuoteTagdd'
@@ -129,7 +126,7 @@ function deleteQuote(id){
 
 function editQuote(id, quoteText, quoteAuthor, quoteTag){
     fetch(`http://localhost:3000/quotes/${id}`,{
-    method: 'PATCH',
+    method: 'PUT',
     headers:{
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -148,7 +145,7 @@ fetch('http://localhost:3000/tags')
 
 function showTags(tags, parentDiv){
 
-    const addTags = document.getElementsByClassName('QuoteTagdd')
+ 
     tags.map(tag => {
         const option = document.createElement('option')
         option.textContent = tag.name
