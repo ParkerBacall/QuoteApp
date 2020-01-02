@@ -64,7 +64,7 @@ main{
 
 .tag-div{
     border: 5px solid lightcoral;
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
 }
 
@@ -91,6 +91,10 @@ main{
     display: none;
 }
 
+.tagDelete{
+    display: none;
+}
+
 .CreateQuoteTagDropdown {
     display: none;
 }
@@ -103,7 +107,11 @@ main{
     display: none;
 }
 
-.tagDelete{
+/* .tagDelete{
+    display: none;
+} */
+
+.tagDeleteDiv{
     display: none;
 }
 
