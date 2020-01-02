@@ -1,11 +1,10 @@
-const tagDropdown = document.getElementById('tagDropdown')
 
+const tagDropdown = document.getElementById('tagDropdown')
 
 
 fetch('http://localhost:3000/quotes')
 .then(response => response.json())
 .then(quotes => showQuotes(quotes))
-.catch(error => console.log(error))
 
 function showQuotes(quotes){
     const cardsContainer = document.querySelector('.cards-container')
@@ -32,6 +31,7 @@ function showQuotes(quotes){
         const editclicked = document.createElement('button')
         editclicked.textContent = "Submit"
         editclicked.className = "editclicked"
+
         const editQuoteText = document.createElement('input')
         editQuoteText.name = "text"
         editQuoteText.placeholder = quote.text
@@ -122,10 +122,10 @@ function editQuote(id, quoteText, quoteAuthor){
 fetch('http://localhost:3000/tags')
     .then(response => response.json())
     .then(tags => showTags(tags, tagDropdown))
-    
 
 function showTags(tags, parentDiv){
-    // const addTags = Array.from(document.getElementsByClassName('QuoteTagdd'))
+
+    const addTags = document.getElementsByClassName('QuoteTagdd')
     const tagContainer = document.getElementById('tag-container')
     tags.map(tag => {
         const allTag = document.createElement('p')
@@ -138,4 +138,5 @@ function showTags(tags, parentDiv){
         parentDiv.append(option)
 
     })
+
 }
