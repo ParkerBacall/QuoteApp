@@ -1,14 +1,19 @@
-header{
+@import url('https://fonts.googleapis.com/css?family=Notable|Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+    
+    header{
     display: flex;
     justify-content: space-around;
-    border: 5px solid blue;
     margin: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 
 nav{
     display: flex;
     justify-content: space-between;
-    border: 5px solid purple;
     align-items: center;
     padding-right: 20px;
 }
@@ -54,6 +59,7 @@ main{
     flex-direction: column;
     height: 200px;
     width: 400px;
+    padding: 25px;
 }
 
 .tag-div{
@@ -113,6 +119,8 @@ main{
 
 a{
     padding-right: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
 }
 
 .createForm{
@@ -140,3 +148,71 @@ footer{
     display:flex;
     justify-content: center;
 }
+
+/* ShowTag */
+
+.tag-nav-bar{
+    background-color: whitesmoke;
+}
+
+.title-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(107, 82, 121);
+    padding: 25px;
+}
+
+.tag-title{
+    padding-left: 25px;
+    font-family: 'Notable', sans-serif;
+    color: whitesmoke;
+}
+
+.button-div{
+    display: flex;
+    align-content: space-between;
+    padding-right: 25px;
+}
+
+.fb-button{
+    width: 35px;
+    height: 35px;
+    background-image: url('https://webstockreview.net/images250_/facebook-and-twitter-icons-png-13.png');
+    background-size: 35px 35px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgb(107, 82, 121);
+    border: none;
+    outline:none;
+}
+
+.twitter-button{
+    width: 35px;
+    height: 35px;
+    background-image: url('https://webstockreview.net/images/twitter-icon-png-white-1.png');
+    background-size: 23px 27px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgb(107, 82, 121);
+    border: none;
+    outline:none;
+}
+
+.linked-in-button{
+    width: 35px;
+    height: 35px;
+    background-image: url('https://webstockreview.net/images250_/linkedin-icon-png-1.png');
+    background-size: 16px 17px;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: rgb(107, 82, 121);
+    border: none;
+    outline:none;
+}
+
+h4{
+    color: rgb(107, 82, 121);
+}
+/* font-family: 'Roboto', sans-serif; */
