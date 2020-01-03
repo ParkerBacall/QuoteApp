@@ -25,6 +25,7 @@ Welcome to TWAS! This application will allow you to create, categorize, and dele
     1. Next run rails db:create db:migrate db:seed
     1. To start the server run rails s in the backend and lite-server in the frontend
 
+![Screen Shot 2020-01-03 at 2 13 38 PM](https://user-images.githubusercontent.com/17993120/71750488-c450de80-2e35-11ea-9dd5-5d4697309627.png)
 
 ### App Overview:
 ##### Online Quotes Database With Full CRUD Capability
@@ -35,7 +36,9 @@ Welcome to TWAS! This application will allow you to create, categorize, and dele
   
   1. The user can also navigate to the about page, get a quote of the day or view Ahmed's favorite quotes.
   
+  
+![Alt Text](https://media.giphy.com/media/LMc3hx5dKbC9e8cB5e/giphy.gif)
 
-
+Here is a [video](https://youtu.be/WXEEuqHVfZU) showing off the functionality of our app!
 
 **Thank you to our sponsor: Ahmed**
