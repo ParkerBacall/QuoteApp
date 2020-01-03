@@ -114,7 +114,7 @@ function showQuotes(quotes){
             tagDelete.textContent = 'x'
             tagDelete.className = 'tagDelete'
             a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
-            tagDiv.append(a, tagDelete)
+            tagDiv.appendChild(a)
             
         })
 
