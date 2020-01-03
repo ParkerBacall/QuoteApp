@@ -48,6 +48,10 @@ function showQuotes(quotes){
         editQuoteAuthor.defaultValue = quote.author
         editQuoteAuthor.className = "edit-quote-author"
 
+        editclicked.addEventListener('click', ()=>{
+            editQuote(quote.id, editQuoteText.value, editQuoteAuthor.value,  getSelectValues(quoteTagselect))
+        })
+
         editButton.addEventListener('click', ()=>{
            if(editQuoteText.style.display === 'none'){
             editQuoteText.style.display = 'block'
@@ -63,12 +67,7 @@ function showQuotes(quotes){
             quoteTagselect.style.display = 'none'
             editQuoteAuthor.style.display = 'none'
             quoteAuthor.style.display = 'block'
-           }
-            
-
-            editclicked.addEventListener('click', ()=>{
-                editQuote(quote.id, editQuoteText.value, editQuoteAuthor.value,  getSelectValues(quoteTagselect))
-            })
+           }   
         })
 
         const deleteButton = document.createElement('button')
@@ -111,6 +110,7 @@ function showQuotes(quotes){
             // tagDelete.className = 'tagDelete'
             h7.innerHTML = `<a href='showTags.html?id=${tag.id}' class='tag-seo'>${tag.name}</a>`
             tagDiv.appendChild(h7)
+
             
         })
 
