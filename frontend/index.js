@@ -83,9 +83,9 @@ function showQuotes(quotes){
 
 
 
-        input.name = "text"
+        // input.name = "text"
        
-        select.className = 'QuoteTagdd'
+        // select.className = 'QuoteTagdd'
     
 
 
@@ -100,24 +100,22 @@ function showQuotes(quotes){
         tagDiv.className = "tag-div"
         cardsContainer.appendChild(cardDiv)
         buttonDiv.append(editButton, deleteButton)
-
-        cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, quoteTagselect, tagDiv, editclicked)
-
-      
-        form.append(select)
-
-
+        
+        // form.append(select)
+        
         quote.tags.map(tag => {
-            const a = document.createElement('a')
-            const tagDelete = document.createElement('button')
-            const tagDeleteDiv = document.createElement('div')
-            tagDelete.textContent = 'x'
-            tagDelete.className = 'tagDelete'
-            a.innerHTML = `<a href='showTags.html?id=${tag.id}'>${tag.name}</a>`
-            tagDiv.appendChild(a)
+            const h7 = document.createElement('h7')
+            // const tagDelete = document.createElement('button')
+            // const tagDeleteDiv = document.createElement('div')
+            // tagDelete.textContent = 'x'
+            // tagDelete.className = 'tagDelete'
+            h7.innerHTML = `<a href='showTags.html?id=${tag.id}' class='tag-seo'>${tag.name}</a>`
+            tagDiv.appendChild(h7)
             
         })
 
+        cardDiv.append(buttonDiv, quoteText, editQuoteText, quoteAuthor, editQuoteAuthor, quoteTagselect, tagDiv, editclicked)
+        
     })
 }
 
@@ -147,14 +145,12 @@ fetch('http://localhost:3000/tags')
     .catch(error => console.log(error))
 
 function showTags(tags, parentDiv){
-
-    const addTags = document.getElementsByClassName('QuoteTagdd')
+    // const addTags = document.getElementsByClassName('QuoteTagdd')
     tags.map(tag => {
         const option = document.createElement('option')
         option.textContent = tag.name
         option.value = tag.id
         parentDiv.append(option)
-
     })
     return fetch("http://localhost:3000/tags")
 }
@@ -168,9 +164,6 @@ function bottomLinks(tags){
         tagContainer.append(allTag)
     })
 }
-
-
-
 
 function getSelectValues(select) {
     var result = [];
