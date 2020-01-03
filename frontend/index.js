@@ -25,7 +25,6 @@ function showQuotes(quotes){
         quoteTagselect.name = "tag_ids[]"
 
      
-
     fetch('http://localhost:3000/tags')
     .then(response => response.json())
     .then(tags => showTags(tags, quoteTagselect))
@@ -53,20 +52,20 @@ function showQuotes(quotes){
         })
 
         editButton.addEventListener('click', ()=>{
-           if(editQuoteText.style.display === 'none'){
-            editQuoteText.style.display = 'block'
-            editclicked.style.display = 'block'
-            quoteText.style.display = 'none'
-            quoteTagselect.style.display = 'block'
-            editQuoteAuthor.style.display = 'block'
-            quoteAuthor.style.display = 'none'
-           } else {
+           if(editQuoteText.style.display === 'block'){
             editQuoteText.style.display = 'none'
             editclicked.style.display = 'none'
             quoteText.style.display = 'block'
             quoteTagselect.style.display = 'none'
             editQuoteAuthor.style.display = 'none'
             quoteAuthor.style.display = 'block'
+           } else {
+            editQuoteText.style.display = 'block'
+            editclicked.style.display = 'block'
+            quoteText.style.display = 'none'
+            quoteTagselect.style.display = 'block'
+            editQuoteAuthor.style.display = 'block'
+            quoteAuthor.style.display = 'none'
            }   
         })
 
@@ -78,15 +77,6 @@ function showQuotes(quotes){
             event.target.parentNode.parentNode.remove()
             deleteQuote(quote.id)
         })
-
-
-
-
-        // input.name = "text"
-       
-        // select.className = 'QuoteTagdd'
-    
-
 
         quoteText.innerText = quote.text 
         quoteText.className = "quote-text"
@@ -100,14 +90,13 @@ function showQuotes(quotes){
         cardsContainer.appendChild(cardDiv)
         buttonDiv.append(editButton, deleteButton)
         
-        // form.append(select)
-        
+
         quote.tags.map(tag => {
             const h7 = document.createElement('h7')
-            // const tagDelete = document.createElement('button')
-            // const tagDeleteDiv = document.createElement('div')
-            // tagDelete.textContent = 'x'
-            // tagDelete.className = 'tagDelete'
+            const tagDelete = document.createElement('button')
+            const tagDeleteDiv = document.createElement('div')
+            tagDelete.textContent = 'x'
+            tagDelete.className = 'tagDelete'
             h7.innerHTML = `<a href='showTags.html?id=${tag.id}' class='tag-seo'>${tag.name}</a>`
             tagDiv.appendChild(h7)
 
@@ -145,7 +134,7 @@ fetch('http://localhost:3000/tags')
     .catch(error => console.log(error))
 
 function showTags(tags, parentDiv){
-    // const addTags = document.getElementsByClassName('QuoteTagdd')
+    
     tags.map(tag => {
         const option = document.createElement('option')
         option.textContent = tag.name
