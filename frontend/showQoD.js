@@ -11,7 +11,7 @@ function randomQuote(quotes) {
 
     const randoQuote = quotes[Math.floor(Math.random() * quotes.length)]
     
-    quoteDiv.className = "quote-div"
+    quoteDiv.className = "main-content"
     quoteText.textContent = randoQuote.text
     quoteAuthor.textContent = randoQuote.author
 
