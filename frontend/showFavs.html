@@ -9,32 +9,33 @@
     <title>Favorite Page</title>
 </head>
 <body>
-    <nav class="tag-nav-bar">
-        <header>
-            <h3 class="logo"></h3>
-            <h2>TWAS</h2>
-        </header>
-        <ul class="tag-ul-bar">
-            <li><a href="http://localhost:3001/">Home</a></li>
-            <li><a href="#">Authors</a></li>
-            <li><a href="/showFavs.html">Ahmed's Favorites</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="/showQoD.html">Quote of the Day</a></li>
-        </ul>
-        
-        <form class='tag-search-bar'>
-            <input type="search" name="q" placeholder="Search">
-            <input type="submit" value="Go!">
-        </form>
-    </nav class="tag-nav-bar">
 
-    <div class="title-div">
-        <h1 class="title">Ahmed's All Time Favorite Quotes</h1>
+    <header>
+        <h2 id="twas">That's What Ahmed Said...</h2>
+    </header>
+
+    <div class="row">
+
+        <div class="col-3 menu">
+            <ul>
+                <li><a href="http://localhost:3001/">Home</a></li>
+                <li><a href="/showAbout.html">About</a></li>
+                <li><a href="/showFavs.html">Ahmed's Favorites</a></li>
+                <li><a href="/showQoD.html">Quote of the Day</a></li>
+            </ul> 
+        </div>
+
+        <div class="col-6">
+            <div class="title-div">
+                <h1 class="tag-title">Ahmed's All Time Favorite Quotes</h1>
+            </div>
+            <div class="main-content"></div>
+        </div>
     </div>
 
-    <main></main>
     <footer>
         <p>©Copyright 2050 by TWAS. All rights reserved.</p>
-      </footer>
+    </footer>
+
 </body>
 </html>

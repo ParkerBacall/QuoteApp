@@ -14,7 +14,6 @@ function showTags(tag){
     titleDiv.append(tagTitle)
 
     const cardsContainer = document.querySelector('.cards-container')
-    document.body.append(cardsContainer)
 
     tag.quotes.map(quote => {
         const cardDiv = document.createElement('div')
@@ -23,32 +22,32 @@ function showTags(tag){
         const quoteAuthor = document.createElement('h4')
 
 
-        cardDiv.className = "card-div"
+        cardDiv.className = "quote-div"
         quoteText.textContent = quote.text
         quoteAuthor.textContent = quote.author
-
+        
         cardsContainer.appendChild(cardDiv)
         cardDiv.append(quoteText, quoteAuthor)
     })
-    ShowTitleBar()
+    // ShowTitleBar()
 }
 
-function ShowTitleBar(){
-    const buttonDiv = document.createElement('div')
-    buttonDiv.className = "button-div"
-    titleDiv.append(buttonDiv)
+// function ShowTitleBar(){
+//     const buttonDiv = document.createElement('div')
+//     buttonDiv.className = "button-div"
+//     titleDiv.append(buttonDiv)
 
-    const fbButton = document.createElement('button')
-    const twitterButton = document.createElement('button')
-    const linkedInButton = document.createElement('button')
+//     const fbButton = document.createElement('button')
+//     const twitterButton = document.createElement('button')
+//     const linkedInButton = document.createElement('button')
 
-    fbButton.textContent = " "
-    fbButton.className = "fb-button"
-    twitterButton.textContent = " "
-    twitterButton.className = "twitter-button"
-    linkedInButton.textContent = " "
-    linkedInButton.className = "linked-in-button"
+//     fbButton.textContent = " "
+//     fbButton.className = "fb-button"
+//     twitterButton.textContent = " "
+//     twitterButton.className = "twitter-button"
+//     linkedInButton.textContent = " "
+//     linkedInButton.className = "linked-in-button"
 
-    buttonDiv.append(fbButton, twitterButton, linkedInButton)
+//     buttonDiv.append(fbButton, twitterButton, linkedInButton)
 
-}
+// }
