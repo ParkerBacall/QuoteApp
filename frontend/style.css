@@ -286,7 +286,7 @@ button{
 }
 
 .editclicked:hover {
-    background-color: purple;
+    background-color: #0f2862;
 }
 
 a{
@@ -310,7 +310,7 @@ h3{
 }
 
 .edit-quote-text{
-    border: 1px purple dotted;
+    border: 1px #0f2862 dotted;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
@@ -318,7 +318,7 @@ h3{
 }
 
 .edit-quote-author{
-    border: 1px purple dotted;
+    border: 1px #0f2862 dotted;
     margin-bottom: 20px;
     width: 90%;
     margin-left: 5%;
@@ -335,8 +335,10 @@ h3{
 #tag-container{
     display: flex;
     flex-wrap: wrap;
-    align-content: space-around;
-    border: 5px solid black;
+    justify-content: center;
+    border: 1px solid white;
+    padding-top: 20px;
+    width: 200px
 }
 
 .edit-quote-text {
@@ -407,4 +409,8 @@ h3{
     min-height: 100%;
     position: relative;
     padding-bottom: 101px !important;
+}
+
+.main-content{
+    padding-top: 15px;
 }
